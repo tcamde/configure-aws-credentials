@@ -2,6 +2,121 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [4.0.2](https://github.com/aws-actions/configure-aws-credentials/compare/v4.0.1...v4.0.2) (2024-02-09)
+
+* Revert 4.0.1 to remove warning
+
+## [4.0.1](https://github.com/aws-actions/configure-aws-credentials/compare/v4.0.0...v4.0.1) (2023-10-03)
+
+### Documentation
+*  Throw a warning when customers use long-term credentials.
+
+## [4.0.0](https://github.com/aws-actions/configure-aws-credentials/compare/v3.0.2...v4.0.0) (2023-09-11)
+
+* Upgraded runtime to `node20` from `node16`
+
+## [3.0.2](https://github.com/aws-actions/configure-aws-credentials/compare/v3.0.1...v3.0.2) (2023-09-07)
+
+### Bug Fixes
+* fixes #817 #819: validation logic throwing unwanted errors [d78f55b](https://github.com/aws-actions/configure-aws-credentials/commit/d78f55b1db65186cb251a8504ae9527af06fc5fd)
+
+## [3.0.1](https://github.com/aws-actions/configure-aws-credentials/compare/v3.0.0...v3.0.1) (2023-08-24)
+
+### Features
+* Can configure `special-characters-workaround` to keep retrying credentials if the returned
+  credentials have special characters (Fixes #599)
+
+### Bug Fixes
+* Fixes #792: Action fails when intending to use existing credentials
+* Minor typo fix from @ubaid-ansari21
+
+### Changes to existing functionality
+* Special characters are now allowed in returned credential variables unless you configure the
+  `special-characters-workaround` option
+
+## [3.0.0](https://github.com/aws-actions/configure-aws-credentials/compare/v2.2.0...v3.0.0) (2023-08-21)
+
+### Features
+* Can configure `max-retries` and `disable-retry` to modify retry functionality when the assume role call fails
+* Set returned credentials as step outputs with `output-credentials`
+* Clear AWS related environment variables at the start of the action with `unset-current-credentials`
+* Unique role identifier is now printed in the workflow logs
+
+### Bug Fixes
+* Can't use credentials if they contain a special character
+* Retry functionality added when generating the JWT fails
+* Can now use `webIdentityTokenFile` option
+* Branch name validation too strict
+* JS SDK v2 deprecation warning in workflow logs
+
+### Changes to existing functionality
+* Default session duration is now 1 hour in all cases (from 6 hours in some cases)
+* Account ID will not be masked by default in logs
+
+## [2.2.0](https://github.com/aws-actions/configure-aws-credentials/compare/v2.1.0...v2.2.0) (2023-05-31)
+
+### Features
+* `inline-session-policy` prop enables assuming a role with inline session policies ([d00f6c6](https://github.com/aws-actions/configure-aws-credentials/commit/d00f6c6f41fde02a9fd0d469040be6ed0df69e73))
+* `managed-session-policies` prop enables assuming a role with managed policy arns ([d00f6c6](https://github.com/aws-actions/configure-aws-credentials/commit/d00f6c6f41fde02a9fd0d469040be6ed0df69e73))
+
+## [2.1.0](https://github.com/aws-actions/configure-aws-credentials/compare/v2.0.0...v2.1.0) (2023-05-31)
+
+### Features
+* `role-chaining` prop enables role chaining use case ([6fbd316](https://github.com/aws-actions/configure-aws-credentials/commit/6fbd316fd15f52c3d9f68e7aa06eae4f5699a518))
+
+## [2.0.0](https://github.com/aws-actions/configure-aws-credentials/compare/v1.7.0...v2.0.0) (2023-03-06)
+
+### Features
+* Version bump to use Node 16 by default. 
+
+## [1.7.0](https://github.com/aws-actions/configure-aws-credentials/compare/v1.6.1...v1.7.0) (2022-08-03)
+
+
+### Features
+
+* Allow audience to be explicitly specified ([2f8dfd0](https://github.com/aws-actions/configure-aws-credentials/commit/2f8dfd0ed43d880f85b57f0c8727b497af2037de))
+
+### [1.6.1](https://github.com/aws-actions/configure-aws-credentials/compare/v1.6.0...v1.6.1) (2022-01-18)
+
+
+### Bug Fixes
+
+* OIDC Parallel Requests error ([133757e](https://github.com/aws-actions/configure-aws-credentials/commit/133757e9b829f4ef44c8e99e3f272879b45fc9c5))
+* Strict Mode Deprecation ([4c5e1c6](https://github.com/aws-actions/configure-aws-credentials/commit/4c5e1c60ccfc95d0e48bf1bc95fc707a94aa2c60))
+
+## [1.6.0](https://github.com/aws-actions/configure-aws-credentials/compare/v1.5.11...v1.6.0) (2021-11-23)
+
+
+### Features
+
+* Add the ability to use a web identity token file ([#240](https://github.com/aws-actions/configure-aws-credentials/issues/240)) ([8053174](https://github.com/aws-actions/configure-aws-credentials/commit/8053174404968575ac1dd102dcb1109d2fe6d9ea))
+* added OIDC ([#262](https://github.com/aws-actions/configure-aws-credentials/issues/262)) ([b8c74de](https://github.com/aws-actions/configure-aws-credentials/commit/b8c74de753fbcb4868bf2011fb2e15826ce973af)), closes [#267](https://github.com/aws-actions/configure-aws-credentials/issues/267)
+* upgraded to new GH OIDC API ([#284](https://github.com/aws-actions/configure-aws-credentials/issues/284)) ([036a4a1](https://github.com/aws-actions/configure-aws-credentials/commit/036a4a1ddf2c0e7a782dca6e083c6c53e5d90321))
+
+
+### Bug Fixes
+
+* reverting update to use new API ([#274](https://github.com/aws-actions/configure-aws-credentials/issues/274)) ([a78fcb0](https://github.com/aws-actions/configure-aws-credentials/commit/a78fcb01f76c8c5c3b05ab82718a6f7919fc0269)), closes [#270](https://github.com/aws-actions/configure-aws-credentials/issues/270)
+* typo "charcters" in README.md ([#241](https://github.com/aws-actions/configure-aws-credentials/issues/241)) ([c48e1b5](https://github.com/aws-actions/configure-aws-credentials/commit/c48e1b578416f3457ccf757c47385df5c054d23f))
+* Updated token retrieval to use new API ([#270](https://github.com/aws-actions/configure-aws-credentials/issues/270)) ([20ce4e5](https://github.com/aws-actions/configure-aws-credentials/commit/20ce4e5ba1de2e753d034b5415075a8767d64d4d))
+
+### [1.5.11](https://github.com/aws-actions/configure-aws-credentials/compare/v1.5.10...v1.5.11) (2021-07-19)
+
+### [1.5.10](https://github.com/aws-actions/configure-aws-credentials/compare/v1.5.9...v1.5.10) (2021-06-01)
+
+
+### Bug Fixes
+
+* skips session tagging ([#209](https://github.com/aws-actions/configure-aws-credentials/issues/209)) ([4900858](https://github.com/aws-actions/configure-aws-credentials/commit/4900858c22f8f07170e3032d4105f99c2aafa9e7))
+
+### [1.5.9](https://github.com/aws-actions/configure-aws-credentials/compare/v1.5.8...v1.5.9) (2021-05-10)
+
+### [1.5.8](https://github.com/aws-actions/configure-aws-credentials/compare/v1.5.7...v1.5.8) (2021-03-02)
+
+### [1.5.7](https://github.com/aws-actions/configure-aws-credentials/compare/v1.5.6...v1.5.7) (2021-02-08)
+
+### [1.5.6](https://github.com/aws-actions/configure-aws-credentials/compare/v1.5.5...v1.5.6) (2021-01-26)
+
 ### [1.5.5](https://github.com/aws-actions/configure-aws-credentials/compare/v1.5.4...v1.5.5) (2020-11-24)
 
 ### [1.5.4](https://github.com/aws-actions/configure-aws-credentials/compare/v1.5.3...v1.5.4) (2020-10-29)
